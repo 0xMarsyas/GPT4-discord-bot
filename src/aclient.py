@@ -39,7 +39,7 @@ class aclient(discord.Client):
         self.bard_session_id = os.getenv("BARD_SESSION_ID")
         self.chat_model = os.getenv("CHAT_MODEL")
         self.chatbot = self.get_chatbot_model()
-        self.message_queue = asyncio.Queue()
+        self.message_queue = None
 
     def get_chatbot_model(self, prompt=prompt) -> Union[AsyncChatbot, Chatbot]:
         if self.chat_model == "UNOFFICIAL":
@@ -52,6 +52,7 @@ class aclient(discord.Client):
             return EdgeChatbot(cookie_path='./cookies.json')
 
     async def process_messages(self):
+        self.message_queue = asyncio.Queue()  # create the queue here
         while True:
             message, user_message = await self.message_queue.get()
             try:
