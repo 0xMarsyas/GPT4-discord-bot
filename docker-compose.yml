@@ -1,10 +1,10 @@
 version: "3"
 
 services:
-  chatgpt-discord-bot:
+  gpetto:
     build: .
-    image: chatgpt-discord-bot
-    container_name: chatgpt-discord-bot
+    image: gpetto
+    container_name: gpetto
     env_file:
       - .env
     restart: unless-stopped
