@@ -3,8 +3,8 @@ version: "3"
 services:
   gpetto:
     build: .
-    image: gpetto
-    container_name: gpetto
+    image: gpt4-discord-bot
+    container_name: gpt4-discord-bot
     env_file:
       - .env
     restart: unless-stopped
